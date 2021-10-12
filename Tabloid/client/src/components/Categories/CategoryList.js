@@ -16,8 +16,9 @@ const CategoryList = () => {
   return (
     <div>
         Categories
-      {categories.map(c => 
-        <Category key={c.id} category={c} />
+        {console.log(categories)}
+      {categories.map(category => 
+        <Category key={category.id} category={category} />
       )}
     </div>
   );

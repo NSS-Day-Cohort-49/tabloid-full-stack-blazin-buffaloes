@@ -1,15 +1,16 @@
 import React from "react";
-import { Card, CardBody, CardImg, CardText, CardTitle, CardSubtitle } from "reactstrap";
+import { Card, CardBody, CardTitle } from "reactstrap";
 
 
-export const Category = ({ c }) => {
+export const Category = ({ category }) => {
   return (
     <>
       <div>
         <Card >
           <CardBody>
-            <div className="post-content">
-              <CardTitle> {c.Name} </CardTitle>
+            <div className="category-content">
+                {console.log(category)}
+              <CardTitle> {category.name} </CardTitle>
             </div>
           </CardBody>
         </Card>
