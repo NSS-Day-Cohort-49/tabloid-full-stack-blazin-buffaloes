@@ -5,7 +5,7 @@ import "./Post.css";
 export const Post = ({ post }) => {
   return (
     <>
-              {console.log(post)}
+            
       <div>
         <Card >
           <CardBody>
