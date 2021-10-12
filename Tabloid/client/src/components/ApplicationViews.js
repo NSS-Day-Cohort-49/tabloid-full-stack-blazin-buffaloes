@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import Hello from "./Hello";
-import CategoryList from "./CategoryList.js"
+import CategoryList from "./Categories/CategoryList.js"
 import { PostList } from "./Posts/PostList";
 
 export default function ApplicationViews({ isLoggedIn }) {

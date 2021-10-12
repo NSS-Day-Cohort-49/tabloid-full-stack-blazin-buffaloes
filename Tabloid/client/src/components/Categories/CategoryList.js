@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getAllCategories } from "../modules/categoryManager";
+import { getAllCategories } from "../../modules/categoryManager";
+import { Category } from "./Category"
 
 const CategoryList = () => {
   const [categories, setCategories] = useState([]);
@@ -16,7 +17,7 @@ const CategoryList = () => {
     <div>
         Categories
       {categories.map(c => 
-        <div>{c.name}</div>
+        <Category key={c.id} category={c} />
       )}
     </div>
   );
