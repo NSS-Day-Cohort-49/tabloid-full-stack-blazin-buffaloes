@@ -31,7 +31,7 @@ namespace Tabloid.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var post = _postRepository.GetbyId(id);
+            var post = _postRepository.GetById(id);
             if (post != null)
             {
                 NotFound();
