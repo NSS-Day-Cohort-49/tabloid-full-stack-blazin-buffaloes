@@ -16,7 +16,6 @@ const CategoryList = () => {
   return (
     <div>
         Categories
-        {console.log(categories)}
       {categories.map(category => 
         <Category key={category.id} category={category} />
       )}
