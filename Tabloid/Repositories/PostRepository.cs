@@ -22,10 +22,9 @@ namespace Tabloid.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT p.Id, p.Title, p.Content, p.ImageLocation, p.CreateDateTime,
-                               p.PublishDateTime, p.IsApproved, p.CategoryId, up.UserProfileId                 
-                        FROM Post p 
-                        INNER JOIN UserProfile up ON up.UserProfileId = up.Id
-                        ORDER BY DateCreated";
+                               p.PublishDateTime, p.IsApproved, p.CategoryId, p.UserProfileId                 
+                        FROM Post p
+                        ORDER BY CreateDateTime";
 
                     var reader = cmd.ExecuteReader();
 
