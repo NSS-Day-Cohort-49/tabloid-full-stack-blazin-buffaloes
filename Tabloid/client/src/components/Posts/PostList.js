@@ -7,17 +7,17 @@ import "./Post.css"
 export const PostList = () => {
     
     const [ posts , setPosts ] = useState([])
+    const currentUserId = sessionStorage.getItem("id")
 
 
     useEffect(() => {
-        getAllPost().then(setPosts)
+        getAllPost(parseInt(currentUserId)).then(setPosts)
     }, []);
    
     return (
 
         <>
             <div>Post</div>
-            {console.log(posts)}
             {posts.map(post => 
                 <Post key={post.id} post={post} />
             )}
