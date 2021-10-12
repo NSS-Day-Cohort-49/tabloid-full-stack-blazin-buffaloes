@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Post } from "./Post";
+import { getPostByUserId } from "../../modules/postManager";
 
 export const UserPostList = () => {
   const [posts, setPosts] = useState([]);

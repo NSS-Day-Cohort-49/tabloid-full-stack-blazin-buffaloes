@@ -44,7 +44,7 @@ export const login = (email, pw) => {
     }).catch(err => {
       console.error(err);
       throw err;
-    }).then(sessionStorage.setItem("id",currentUser.id))
+    }).then()
 };
 
 
