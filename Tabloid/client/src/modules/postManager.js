@@ -14,7 +14,7 @@ export const getAllPost = () => {
           if (res.ok) {
             return res.json();
           } else {
-            throw new Error("An unknown error occurred while trying to get quotes.");
+            throw new Error("An unknown error occurred while trying to get posts.");
           }
         });
       });

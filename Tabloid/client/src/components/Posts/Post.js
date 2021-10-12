@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardBody, CardImg, CardText, CardTitle, CardSubtitle } from "reactstrap";
+import "./Post.css";
 
 export const Post = ({ p }) => {
   return (
