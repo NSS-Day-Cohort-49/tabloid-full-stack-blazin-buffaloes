@@ -2,21 +2,22 @@ import React from "react";
 import { Card, CardBody, CardImg, CardText, CardTitle, CardSubtitle } from "reactstrap";
 import "./Post.css";
 
-export const Post = ({ p }) => {
+export const Post = ({ post }) => {
   return (
     <>
+              {console.log(post)}
       <div>
         <Card >
           <CardBody>
             <div className="post-content">
-              <CardTitle> {p.Title} </CardTitle>
-              <CardText>{p.Content}</CardText>
+              <CardTitle> {post.title} </CardTitle>
+              <CardText>{post.content}</CardText>
             </div>
             <div className="post-details">
-              <CardSubtitle>{p.PublishedDateTime} </CardSubtitle>
+              <CardSubtitle>{post.publishedDateTime} </CardSubtitle>
             </div>
           </CardBody>
-          <CardImg> {p.ImageLocation}</CardImg>
+          <img src={post.imageLocation} alt={post.title} />
         </Card>
       </div>
     </>
