@@ -14,6 +14,7 @@ const CategoryList = () => {
 
   return (
     <div>
+        Categories
       {categories.map(c => 
         <div>{c.name}</div>
       )}
