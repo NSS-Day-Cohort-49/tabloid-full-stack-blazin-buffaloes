@@ -11,7 +11,7 @@ export const PostList = () => {
     const history = useHistory();
     const [ posts , setPosts ] = useState([])
     const addNewPost = () =>{
-        // history.push
+        history.push("/post/add")
     }
 
     useEffect(() => {
