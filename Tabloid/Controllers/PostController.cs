@@ -38,5 +38,33 @@ namespace Tabloid.Controllers
             }
             return Ok(post);
         }
+        // https://localhost:5001/api/post/
+        [HttpPost]
+        public IActionResult Post(Post post)
+        {
+            _postRepository.Add(post);
+            return CreatedAtAction("Get", new { id = post.Id }, post);
+        }
+
+        // https://localhost:5001/api/post/id
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Post post)
+        {
+            if (id != post.Id)
+            {
+                return BadRequest();
+            }
+
+            _postRepository.Update(post);
+            return NoContent();
+        }
+
+        // https://localhost:5001/api/post/id
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _postRepository.Delete(id);
+            return NoContent();
+        }
     }
 }
