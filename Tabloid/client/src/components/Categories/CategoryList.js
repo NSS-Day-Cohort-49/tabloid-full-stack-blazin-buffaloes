@@ -6,9 +6,9 @@ import { Category } from "./Category"
 const CategoryList = () => {
   const [categories, setCategories] = useState([]);
 
-  const getCategories = () => {
-    getAllCategories().then(categories => setCategories(categories));
-  };
+  // const getCategories = () => {
+  //   getAllCategories().then(categories => setCategories(categories));
+  // };
 
   const history = useHistory();
     const addCategory = () =>{
@@ -16,11 +16,13 @@ const CategoryList = () => {
     }
 
   useEffect(() => {
-    getCategories();
+    getAllCategories().then(setCategories);
+    // getCategories();
   }, []);
 
   return (
     <div>
+      {console.log(categories)}
         Categories
         <button onClick={addCategory}>Add Category</button>
       {categories.map(category => 
