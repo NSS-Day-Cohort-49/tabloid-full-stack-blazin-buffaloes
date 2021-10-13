@@ -6,6 +6,7 @@ import Hello from "./Hello";
 import CategoryList from "./Categories/CategoryList.js"
 import { PostList } from "./Posts/PostList";
 import { UserPostList } from "./Posts/UserPostList";
+import { PostDetails } from "./Posts/PostDetail";
 
 export default function ApplicationViews({ isLoggedIn }) {
 
@@ -25,6 +26,9 @@ export default function ApplicationViews({ isLoggedIn }) {
 
         <Route path="/posts">
           {isLoggedIn ? <PostList /> : <Redirect to="/login" />}
+          </Route>
+        <Route path="/post/:postId(/d+)">
+          {isLoggedIn ? <PostDetails /> : <Redirect to="/login" />}
           </Route>
 
         <Route path="/myposts">
