@@ -11,11 +11,11 @@ export const PostList = () => {
     const history = useHistory();
     const [ posts , setPosts ] = useState([])
     const addNewPost = () =>{
-        history.push
+        // history.push
     }
 
     useEffect(() => {
-        getAllPost(uid).then(setPosts)
+        getAllPost().then(setPosts)
     }, []);
    
     return (
@@ -25,7 +25,6 @@ export const PostList = () => {
         <>
             <div>Post</div>
             <button onClick={addNewPost}>Add Post</button>
-            {console.log(uid)}
             {posts.map(post => 
                 <Post key={post.id} post={post} />
             )}

@@ -21,7 +21,7 @@ export const getAllPost = () => {
 
 export const getPostByUserId = (uid) => {
   return getToken().then((token) => {
-    return fetch(`${apiUrl}/userpost/${uid}`, {
+    return fetch(`${apiUrl}/userpost`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -61,6 +61,27 @@ export const addPost = (post) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(post),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else if (res.status === 401) {
+        throw new Error("Unautherized");
+      } else {
+        throw new Error(
+          "An unknown error occurred while trying to save a new post."
+        );
+      }
+    });
+  });
+};
+
+export const deletePost = (id) => {
+  return getToken().then((token) => {
+    return fetch(`${apiUrl}/${id}`, {
+      method: "Delete",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     }).then((res) => {
       if (res.ok) {
         return res.json();

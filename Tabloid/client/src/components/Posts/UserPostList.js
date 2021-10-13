@@ -6,7 +6,7 @@ export const UserPostList = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    getPostByUserId(IDBObjectStore.get("fbase_key")).then(setPosts);
+    getPostByUserId().then(setPosts);
   }, []);
 
   return (

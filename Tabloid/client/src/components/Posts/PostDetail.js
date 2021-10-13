@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Card, CardTitle } from "reactstrap";
+import { Card, CardTitle,CardText,CardBody, CardSubtitle } from "reactstrap";
 import { getPostById } from "../../modules/postManager";
 
 export const PostDetails = () => {
