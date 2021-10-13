@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { addCategory, getAllCategories } from "../../modules/categoryManager";
+import { useHistory } from "react-router";
+import {  getAllCategories } from "../../modules/categoryManager";
 import { Category } from "./Category"
 
 const CategoryList = () => {
@@ -8,6 +9,11 @@ const CategoryList = () => {
   const getCategories = () => {
     getAllCategories().then(categories => setCategories(categories));
   };
+
+  const history = useHistory();
+    const addCategory = () =>{
+        history.push("/categories/add");
+    }
 
   useEffect(() => {
     getCategories();
