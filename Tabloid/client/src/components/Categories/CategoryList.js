@@ -16,10 +16,10 @@ const CategoryList = () => {
   return (
     <div>
         Categories
+        <button onClick={addCategory}>Add Category</button>
       {categories.map(category => 
         <Category key={category.id} category={category} />
       )}
-      <button onClick={addCategory}></button>
     </div>
   );
 }

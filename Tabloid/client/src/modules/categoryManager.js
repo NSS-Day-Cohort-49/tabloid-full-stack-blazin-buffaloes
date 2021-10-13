@@ -19,9 +19,9 @@ export const getAllCategories = () => {
       });
     };
 
-    export const getCategoryById = (id) => {
+    export const  getCategoryById =(id) => {
       return getToken().then((token) => {
-          return fetch(baseUrl, {
+          return fetch(`${baseUrl}/${id}`, {
             method: "GET",
             headers: {
               Authorization: `Bearer ${token}`
@@ -80,15 +80,15 @@ export const addCategory = (category) => {
   };
 
 
-  export const deleteCategory = (category) => {
+  export const deleteCategory = (id) => {
     return getToken().then((token) => {
-      return fetch(baseUrl, {
+      return fetch(`${baseUrl}/${id}`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(category)
+        body: JSON.stringify(id)
       }).then(resp => {
         if (resp.ok) {
           return resp.json();
