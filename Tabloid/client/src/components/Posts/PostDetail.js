@@ -4,25 +4,36 @@ import { Card, CardTitle } from "reactstrap";
 import { getPostById } from "../../modules/postManager";
 
 export const PostDetails = () => {
-  const postId = useParams();
+  const postIdasString = useParams();
   const [post, setPost] = useState();
-  const [comments, setComments] = useState();
-  const [tags, setTags] = useState();
+//   const [comments, setComments] = useState();
+//   const [tags, setTags] = useState();
 
   useEffect(() => {
-    getPostById(postId)
+    getPostById(parseInt(postIdasString))
       .then(setPost)
-      .then(getCommentsByPostId(postId))
-      .then(setComments)
-      .then(getTagsByPostId(postId))
-      .then(setTags);
+    //   .then(getCommentsByPostId(postId))
+    //   .then(setComments)
+    //   .then(getTagsByPostId(postId))
+    //   .then(setTags);
   }, []);
 
   return (
       <>
-      <Card>
-          <CardTitle>{post.title}</CardTitle>
-      </Card>
+       <div>
+        <Card >
+          <CardBody>
+            <div className="post-content">
+              <CardTitle> {post.title} </CardTitle>
+              <CardText>{post.content}</CardText>
+            </div>
+            <div className="post-details">
+              <CardSubtitle>{post.publishedDateTime} </CardSubtitle>
+            </div>
+          </CardBody>
+          <img src={post.imageLocation} alt={post.title} />
+        </Card>
+      </div>
       </>
   )
 };
