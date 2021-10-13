@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { uid } from "../../modules/authManager";
 import { getAllPost } from "../../modules/postManager";
 import { Post } from "./Post";
@@ -7,10 +8,11 @@ import "./Post.css"
 
 export const PostList = () => {
     
+    const history = useHistory();
     const [ posts , setPosts ] = useState([])
-    const currentUserId = sessionStorage.getItem("id")
-    const authUser = Object.keys(window.localStorage)
-  .filter(item => item.startsWith('firebase:authUser'))[0]
+    const addNewPost = () =>{
+        history.push
+    }
 
     useEffect(() => {
         getAllPost(uid).then(setPosts)
@@ -22,6 +24,7 @@ export const PostList = () => {
 
         <>
             <div>Post</div>
+            <button onClick={addNewPost}>Add Post</button>
             {console.log(uid)}
             {posts.map(post => 
                 <Post key={post.id} post={post} />
