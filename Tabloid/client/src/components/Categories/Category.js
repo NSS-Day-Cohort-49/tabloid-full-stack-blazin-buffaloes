@@ -9,7 +9,6 @@ export const Category = ({ category }) => {
         <Card >
           <CardBody>
             <div className="category-content">
-                {console.log(category)}
               <CardTitle> {category.name} </CardTitle>
             </div>
           </CardBody>

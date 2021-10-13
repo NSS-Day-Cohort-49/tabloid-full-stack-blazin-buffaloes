@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllCategories } from "../../modules/categoryManager";
+import { addCategory, getAllCategories } from "../../modules/categoryManager";
 import { Category } from "./Category"
 
 const CategoryList = () => {
@@ -16,7 +16,7 @@ const CategoryList = () => {
   return (
     <div>
         Categories
-        {console.log(categories)}
+        <button onClick={addCategory}>Add Category</button>
       {categories.map(category => 
         <Category key={category.id} category={category} />
       )}

@@ -65,7 +65,7 @@ export const addPost = (post) => {
       if (res.ok) {
         return res.json();
       } else if (res.status === 401) {
-        throw new Error("Unautherized");
+        throw new Error("Unauthorized");
       } else {
         throw new Error(
           "An unknown error occurred while trying to save a new post."
@@ -86,7 +86,7 @@ export const deletePost = (id) => {
       if (res.ok) {
         return res.json();
       } else if (res.status === 401) {
-        throw new Error("Unautherized");
+        throw new Error("Unauthorized");
       } else {
         throw new Error(
           "An unknown error occurred while trying to save a new post."
