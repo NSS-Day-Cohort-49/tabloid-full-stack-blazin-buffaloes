@@ -97,7 +97,7 @@ namespace Tabloid.Repositories
             }
         }
 
-        public void Add(Post post)
+        public int Add(Post post)
         {
             using (var conn = Connection)
             {
@@ -106,9 +106,9 @@ namespace Tabloid.Repositories
                 {
                     cmd.CommandText = @"
                         INSERT INTO Post (Title, Content, ImageLocation, CreateDateTime, PublishDateTime, IsApproved, CategoryId, UserProfileId)
+                        OUTPUT INSERTED.Id
                         VALUES (@Title, @Content, @ImageLocation, @CreateDateTime, @PublishDateTime, @IsApproved, @CategoryId, @UserProfileId)";
 
-                    DbUtils.AddParameter(cmd, "@Id", post.Id);
                     DbUtils.AddParameter(cmd, "@Title", post.Title);
                     DbUtils.AddParameter(cmd, "@Content", post.Content);
                     DbUtils.AddParameter(cmd, "@ImageLocation", post.ImageLocation);
@@ -118,7 +118,7 @@ namespace Tabloid.Repositories
                     DbUtils.AddParameter(cmd, "@CategoryId", post.CategoryId);
                     DbUtils.AddParameter(cmd, "@UserProfileId", post.UserProfileId);
 
-                    post.Id = (int)cmd.ExecuteScalar();
+                    return post.Id = (int)cmd.ExecuteScalar();
                 }
             }
         }
