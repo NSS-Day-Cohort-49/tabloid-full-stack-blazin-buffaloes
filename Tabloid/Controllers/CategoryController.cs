@@ -5,6 +5,7 @@ using System.Security.Claims;
 using Tabloid.Models;
 using Tabloid.Repositories;
 
+
 namespace Tabloid.Controllers
 {
     [Authorize]
@@ -29,9 +30,20 @@ namespace Tabloid.Controllers
             var currentUserProfile = GetCurrentUserProfile();
             //if (currentUserProfile.UserType.Name != "Admin")
             //{
-              //  return Unauthorized();
+            //    return Unauthorized();
             //}
             return Ok(_categoryRepository.GetAll());
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var category = _categoryRepository.GetCategoryById(id);
+            //if (category != null)
+            //{
+            //    NotFound();
+            //}
+            return Ok(category);
         }
 
         [HttpPost]
@@ -40,7 +52,11 @@ namespace Tabloid.Controllers
             var currentUserProfile = GetCurrentUserProfile();
             //if (currentUserProfile.UserType.Name != "Admin")
             //{
+<<<<<<< Updated upstream
               //  return Unauthorized();
+=======
+            //    return Unauthorized();
+>>>>>>> Stashed changes
             //}
             _categoryRepository.Add(category);
             return CreatedAtAction(nameof(Get), new { id = category.Id }, category);
@@ -50,6 +66,29 @@ namespace Tabloid.Controllers
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
+        }
+
+        // https://localhost:5001/api/category/id
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Category category)
+        {
+            //if (id != category.Id)
+            //{
+            //    return BadRequest();
+            //}
+
+            _categoryRepository.UpdateCategory(category);
+            return NoContent();
+
+        }
+
+        // https://localhost:5001/api/category/id
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _categoryRepository.DeleteCategory(id);
+             return NoContent();
+      
         }
     }
 }
