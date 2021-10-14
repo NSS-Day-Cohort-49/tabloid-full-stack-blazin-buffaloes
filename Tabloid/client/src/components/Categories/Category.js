@@ -8,7 +8,7 @@ export const Category = ({ category }) => {
 
   const history = useHistory();
     const updateCategory = () =>{
-        history.push("/categories/edit");
+        history.push(`/categories/edit/${category.id}`);
     }
 
   return (

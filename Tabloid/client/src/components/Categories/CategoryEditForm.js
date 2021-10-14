@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { updateCategory } from "../../modules/categoryManager";
+import { getCategoryById, updateCategory } from "../../modules/categoryManager";
 import { getAllCategories } from '../../modules/categoryManager';
-import { useHistory } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 
-const CategoryForm = () => {
-  const emptyCategory = {
-    name: ''
-  };
-
-  const [category, setCategory] = useState(emptyCategory);
+export const CategoryEditForm = () => {
   const history = useHistory()
-
+  const {categoryId} = useParams();
+  const categoryid = parseInt(categoryId);
+  const[category, setCategory] = useState({
+    id:categoryid,
+    name:""
+  });
+  useEffect(() => {
+    getCategoryById(categoryid)
+    .then(setCategory)
+  },[])
   const handleInputChange = (evt) => {
+    evt.preventDefault();
     const value = evt.target.value;
     const key = evt.target.id;
 
@@ -25,15 +30,16 @@ const CategoryForm = () => {
   const handleSave = (evt) => {
     evt.preventDefault();
 
-    updateCategory(category).then(() => {
-      setCategory(emptyCategory);
-      getAllCategories();
+    updateCategory(category).then(
       history.push("/categories")
-    });
+    );
   };
+
+
 
   return (
     <Form>
+      {console.log(category)}
       <FormGroup>
         <Label for="name">Name</Label>
         <Input type="text" name="name" id="name" placeholder="category name"
@@ -45,4 +51,4 @@ const CategoryForm = () => {
   );
 };
 
-export default CategoryForm;
+export default CategoryEditForm;
