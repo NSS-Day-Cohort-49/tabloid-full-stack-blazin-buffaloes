@@ -4,6 +4,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Hello from "./Hello";
 import CategoryList from "./Categories/CategoryList.js"
+import CategoryForm from "./Categories/CategoryForm";
 import { PostList } from "./Posts/PostList";
 import { UserPostList } from "./Posts/UserPostList";
 import { PostDetails } from "./Posts/PostDetail";
@@ -17,9 +18,14 @@ export default function ApplicationViews({ isLoggedIn }) {
         <Route path="/" exact>
           {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
         </Route>
-        <Route path="/categories"> 
+        <Route exact path="/categories"> 
         {isLoggedIn ? <CategoryList /> : <Redirect to="/login" />}
         </Route>
+
+        <Route exact path="/categories/add"> 
+        {isLoggedIn ? <CategoryForm /> : <Redirect to="/login" />}
+        </Route>
+
 
         <Route path="/login">
           <Login />
