@@ -27,10 +27,10 @@ namespace Tabloid.Controllers
         public IActionResult Get()
         {
             var currentUserProfile = GetCurrentUserProfile();
-            if (currentUserProfile.UserType.Name != "Admin")
-            {
-                return Unauthorized();
-            }
+            //if (currentUserProfile.UserType.Name != "Admin")
+            //{
+              //  return Unauthorized();
+            //}
             return Ok(_categoryRepository.GetAll());
         }
 
@@ -38,10 +38,10 @@ namespace Tabloid.Controllers
         public IActionResult Post(Category category)
         {
             var currentUserProfile = GetCurrentUserProfile();
-            if (currentUserProfile.UserType.Name != "Admin")
-            {
-                return Unauthorized();
-            }
+            //if (currentUserProfile.UserType.Name != "Admin")
+            //{
+              //  return Unauthorized();
+            //}
             _categoryRepository.Add(category);
             return CreatedAtAction(nameof(Get), new { id = category.Id }, category);
         }

@@ -8,6 +8,7 @@ import CategoryForm from "./Categories/CategoryForm";
 import { PostList } from "./Posts/PostList";
 import { UserPostList } from "./Posts/UserPostList";
 import { PostDetails } from "./Posts/PostDetail";
+import { PostForm } from "./Posts/PostForm";
 
 export default function ApplicationViews({ isLoggedIn }) {
 
@@ -36,6 +37,9 @@ export default function ApplicationViews({ isLoggedIn }) {
         <Route path="/post/:postId(/d+)">
           {isLoggedIn ? <PostDetails /> : <Redirect to="/login" />}
           </Route>
+        <Route path="/post/add">
+          {isLoggedIn ? <PostForm /> : <Redirect to="/login" />}
+        </Route>
 
         <Route path="/myposts">
           {isLoggedIn ? <UserPostList /> : <Redirect to="/login" />}
