@@ -9,6 +9,9 @@ namespace Tabloid.Repositories
     public interface ICategoryRepository
     {
         List<Category> GetAll();
+        Category GetCategoryById(int id);
         void Add(Category category);
+        public void UpdateCategory(Category category);
+        public void DeleteCategory(int categoryId);
     }
 }
