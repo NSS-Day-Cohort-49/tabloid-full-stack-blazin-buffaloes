@@ -53,7 +53,7 @@ namespace Tabloid.Repositories
         }
 
 
-        // Get Video by Id without comments:
+        // Get Post by Id without comments:
         public Post GetById(int id)
         {
             using (var conn = Connection)
@@ -62,13 +62,13 @@ namespace Tabloid.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT p.Id, p.Title, p.Content, p.ImageLocation, p.CreateDateTime,
-                               p.PublishDateTime, p.IsApproved, p.CategoryId, up.UserProfileId                 
-                        FROM Post p 
-                        INNER JOIN UserProfile up ON up.UserProfileId = up.Id
-                        ORDER BY DateCreated
-                    WHERE v.Id = @Id";
+                      SELECT p.Id, p.Title, p.Content, p.ImageLocation, p.CreateDateTime,
+                        p.PublishDateTime, p.IsApproved, p.CategoryId, p.UserProfileId                
+                        FROM Post p
+                        WHERE p.Id = @Id
+                        ORDER BY CreateDateTime";
 
+                        //JOIN userProfile up on up.Id = p.UserProfile
                     DbUtils.AddParameter(cmd, "@Id", id);
 
                     var reader = cmd.ExecuteReader();
@@ -87,6 +87,11 @@ namespace Tabloid.Repositories
                             IsApproved = DbUtils.IsDbNull(reader, "IsApproved"),
                             CategoryId = DbUtils.GetInt(reader, "CategoryId"),
                             UserProfileId = DbUtils.GetInt(reader, "UserProfileId"),
+                            //User = new UserProfile()
+                            //{
+                            //    FirstName = DbUtils.GetString(reader, "Firstname"),
+                            //    LastName = DbUtils.GetString(reader, "Lastname"),
+                            //}
                         };
                     }
 
