@@ -52,11 +52,9 @@ namespace Tabloid.Controllers
             var currentUserProfile = GetCurrentUserProfile();
             //if (currentUserProfile.UserType.Name != "Admin")
             //{
-<<<<<<< Updated upstream
+
               //  return Unauthorized();
-=======
-            //    return Unauthorized();
->>>>>>> Stashed changes
+
             //}
             _categoryRepository.Add(category);
             return CreatedAtAction(nameof(Get), new { id = category.Id }, category);

@@ -26,5 +26,7 @@ namespace Tabloid.Models
         [Required]
         public int UserProfileId { get; set; }
 
+        public UserProfile User { get; set; }
+
     }
 }
