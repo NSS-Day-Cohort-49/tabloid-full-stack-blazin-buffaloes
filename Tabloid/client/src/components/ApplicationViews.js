@@ -39,7 +39,7 @@ export default function ApplicationViews({ isLoggedIn }) {
         <Route path="/posts">
           {isLoggedIn ? <PostList /> : <Redirect to="/login" />}
           </Route>
-        <Route path="/post/:postId(/d+)">
+        <Route path="/post/:postId(\d+)">
           {isLoggedIn ? <PostDetails /> : <Redirect to="/login" />}
           </Route>
         <Route path="/post/add">

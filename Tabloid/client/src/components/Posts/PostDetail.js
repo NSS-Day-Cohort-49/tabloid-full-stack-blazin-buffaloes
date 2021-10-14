@@ -4,13 +4,20 @@ import { Card, CardTitle,CardText,CardBody, CardSubtitle } from "reactstrap";
 import { getPostById } from "../../modules/postManager";
 
 export const PostDetails = () => {
-  const postIdasString = useParams();
-  const [post, setPost] = useState();
+  const  postIdasString  = useParams();
+  const postId = parseInt(postIdasString.postId)
+  const [post, setPost] = useState({
+    title : "",
+    content : "",
+    publishedDateTime :"",
+    imageLocation : "",
+    title : "",
+  });
 //   const [comments, setComments] = useState();
 //   const [tags, setTags] = useState();
 
   useEffect(() => {
-    getPostById(parseInt(postIdasString))
+    getPostById(postId)
       .then(setPost)
     //   .then(getCommentsByPostId(postId))
     //   .then(setComments)
@@ -20,6 +27,8 @@ export const PostDetails = () => {
 
   return (
       <>
+            <h1>Post Detail</h1>
+            {console.log(post)}
        <div>
         <Card >
           <CardBody>
