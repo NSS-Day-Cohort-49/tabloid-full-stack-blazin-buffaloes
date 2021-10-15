@@ -5,14 +5,14 @@ import { Category } from "./Category"
 
 
 
-const CategoryList = () => {
+export const CategoryList = () => {
   const [categories, setCategories] = useState([]);
   
-  // const getCategories = () => {
-    //   getAllCategories().then(categories => setCategories(categories));
-    // };
-    
-    let togglebool = true;
+ 
+  const onDelete = () => {
+    getAllCategories().then(setCategories);
+  }
+  
 
   const history = useHistory();
     const addCategory = () =>{
@@ -22,18 +22,16 @@ const CategoryList = () => {
   useEffect(() => {
     getAllCategories().then(setCategories);
     // getCategories();
-  }, [togglebool]);
+  }, []);
 
   return (
     <div>
-      {console.log(categories)}
         Categories
         <button onClick={addCategory}>Add Category</button>
       {categories.map(category => 
-        <Category key={category.id} category={category} togglebool={togglebool}/>
+        <Category key={category.id} category={category} onDelete={onDelete}/>
       )}
     </div>
   );
 }
 
-export default CategoryList;

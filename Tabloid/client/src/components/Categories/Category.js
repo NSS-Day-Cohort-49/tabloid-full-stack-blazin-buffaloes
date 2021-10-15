@@ -6,19 +6,17 @@ import { deleteCategory } from "../../modules/categoryManager";
 
 
 
+
   
-export const Category = ({ category ,togglebool }) => {
+export const Category = (props) => {
   const history = useHistory();
   const updateCategory = () => {
-    history.push(`/categories/edit/${category.id}`);
+    history.push(`/categories/edit/${props.category.id}`);
   };
 
-
-
-
   const handleDelete = () => {
-    togglebool = !togglebool
-    deleteCategory(category.id).then(history.push("/categories"));
+    props.onDelete();
+    deleteCategory(props.category.id);
   };
 
   return (
@@ -27,7 +25,7 @@ export const Category = ({ category ,togglebool }) => {
         <Card>
           <CardBody>
             <div className="category-content">
-              <CardTitle> {category.name} </CardTitle>
+              <CardTitle> {props.category.name} </CardTitle>
             </div>
             <div className="btn btn-primary" onClick={updateCategory}>Edit</div>
             <div className="btn btn-primary" onClick={handleDelete}>
