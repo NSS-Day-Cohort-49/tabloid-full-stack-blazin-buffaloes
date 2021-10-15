@@ -83,15 +83,15 @@ export const deletePost = (id) => {
         Authorization: `Bearer ${token}`,
       },
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else if (res.status === 401) {
-        throw new Error("Unauthorized");
-      } else {
-        throw new Error(
-          "An unknown error occurred while trying to save a new post."
-        );
-      }
+      // if (res.ok) {
+      //   return res.json();
+      // } else if (res.status === 401) {
+      //   throw new Error("Unauthorized");
+      // } else {
+      //   throw new Error(
+      //     "An unknown error occurred while trying to save a new post."
+      //   );
+      // }
     });
   });
 };

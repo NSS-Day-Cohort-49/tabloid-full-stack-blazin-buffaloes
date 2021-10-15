@@ -13,21 +13,22 @@ export const PostList = () => {
     const addNewPost = () =>{
         history.push("/post/add")
     }
+    const onDelete = () => {
+        getAllPost().then(setPosts);
+      }
 
     useEffect(() => {
         getAllPost().then(setPosts)
     }, []);
    
     return (
-
-     
-
         <>
-            <div>Post</div>
+            <div>Post
             <button onClick={addNewPost}>Add Post</button>
             {posts.map(post => 
-                <Post key={post.id} post={post} />
+                <Post key={post.id} post={post} onDelete={onDelete}/>
             )}
+            </div>
         </>
     )
 }
