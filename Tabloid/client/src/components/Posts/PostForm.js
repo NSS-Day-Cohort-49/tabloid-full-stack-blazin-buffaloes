@@ -16,6 +16,7 @@ export const PostForm = () => {
             categoryId: 0,
             userProfileId: 2
     })
+    const history = useHistory();
     const [categories, setCategories] = useState([])
     useEffect(() => {
         getAllCategories().then(setCategories)
@@ -43,6 +44,9 @@ export const PostForm = () => {
     const handleSave = (event) => {
         event.preventDefault()
         addPost(post)
+        .then(
+            history.push("/posts")
+          )
     }
 
     return (
