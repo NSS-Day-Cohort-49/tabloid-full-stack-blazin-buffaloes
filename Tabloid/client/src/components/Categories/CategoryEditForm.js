@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { getCategoryById, updateCategory } from "../../modules/categoryManager";
-import { getAllCategories } from '../../modules/categoryManager';
+import { deleteCategory, getCategoryById, updateCategory } from "../../modules/categoryManager";
+// import { getAllCategories } from '../../modules/categoryManager';
 import { useHistory, useParams } from 'react-router';
 
 export const CategoryEditForm = () => {
@@ -27,13 +27,13 @@ export const CategoryEditForm = () => {
     setCategory(categoryCopy);
   };
 
-  const handleSave = (evt) => {
-    evt.preventDefault();
-
+  const handleSave = () => {
     updateCategory(category).then(
       history.push("/categories")
     );
   };
+
+  
 
 
 
@@ -46,7 +46,8 @@ export const CategoryEditForm = () => {
           value={category.name}
           onChange={handleInputChange} />
       </FormGroup>
-      <Button className="btn btn-primary" onClick={handleSave}>Submit</Button>
+      <div className="btn btn-primary" onClick={handleSave}>Submit</div>
+     
     </Form>
   );
 };

@@ -124,7 +124,7 @@ namespace Tabloid.Repositories
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                            DELETE FROM 
+                            DELETE FROM Category
                             WHERE Id = @id
                         ";
 
