@@ -104,10 +104,11 @@ namespace Tabloid.Repositories
                     cmd.CommandText = @"
                             UPDATE Category
                             SET 
-                                [Name] = @name,                             
+                                [Name] = @name                             
                             WHERE Category.Id = @id";
 
                     cmd.Parameters.AddWithValue("@name", category.Name);
+                    cmd.Parameters.AddWithValue("@id", category.Id);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -123,7 +124,7 @@ namespace Tabloid.Repositories
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                            DELETE FROM 
+                            DELETE FROM Category
                             WHERE Id = @id
                         ";
 

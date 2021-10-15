@@ -58,21 +58,19 @@ export const addCategory = (category) => {
     });
   };
 
-  export const updateCategory = (id) => {
+  export const updateCategory = (category) => {
     return getToken().then((token) => {
-      return fetch(baseUrl, {
-        method: "POST",
+      return fetch(`${baseUrl}/${category.id}`, {
+        method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(id)
+        body: JSON.stringify(category)
       }).then(resp => {
-        if (resp.ok) {
-          return resp.json();
-        } else if (resp.status === 401) {
+       if (resp.status === 401) {
           throw new Error("Unauthorized");
-        } else {
+        } else if (resp.status !== 401 && resp.status !== 204) {
           throw new Error("An unknown error occurred while trying to save a new category.");
         }
       });
@@ -83,20 +81,20 @@ export const addCategory = (category) => {
   export const deleteCategory = (id) => {
     return getToken().then((token) => {
       return fetch(`${baseUrl}/${id}`, {
-        method: "POST",
+        method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json"
         },
         body: JSON.stringify(id)
       }).then(resp => {
-        if (resp.ok) {
-          return resp.json();
-        } else if (resp.status === 401) {
-          throw new Error("Unauthorized");
-        } else {
-          throw new Error("An unknown error occurred while trying to save a new category.");
-        }
+        // if (resp.ok) {
+        //   return resp.json();
+        // } else if (resp.status === 401) {
+        //   throw new Error("Unauthorized");
+        // } else {
+        //   throw new Error("An unknown error occurred while trying to save a new category.");
+        // }
       });
     });
   };
