@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useHistory, Link } from "react-router-dom";
 import { login } from "../modules/authManager";
+import logo from "./quill-logo.png";
 
 export default function Login() {
   const history = useHistory();
@@ -17,23 +18,41 @@ export default function Login() {
   };
 
   return (
-    <Form onSubmit={loginSubmit}>
-      <fieldset>
-        <FormGroup>
-          <Label for="email">Email</Label>
-          <Input id="email" type="text" autoFocus onChange={e => setEmail(e.target.value)} />
-        </FormGroup>
-        <FormGroup>
-          <Label for="password">Password</Label>
-          <Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
-        </FormGroup>
-        <FormGroup>
-          <Button>Login</Button>
-        </FormGroup>
-        <em>
-          Not registered? <Link to="register">Register</Link>
-        </em>
-      </fieldset>
-    </Form>
+    <>
+      <div className="center">
+        <Form className="login-container" onSubmit={loginSubmit}>
+          <FormGroup>
+            <img src={logo} alt="logo" className="login-logo" />
+          </FormGroup>
+          <fieldset>
+            <FormGroup>
+              {/* <Label for="email">Email</Label> */}
+              <Input
+                id="email"
+                type="text"
+                placeholder="Email"
+                autoFocus
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </FormGroup>
+            <FormGroup>
+              {/* <Label for="password">Password</Label> */}
+              <Input
+                id="password"
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Button className="login-button">Login</Button>
+            </FormGroup>
+            <em>
+              Not registered? <Link to="register">Register</Link>
+            </em>
+          </fieldset>
+        </Form>
+      </div>
+    </>
   );
 }
